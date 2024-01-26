@@ -12,6 +12,7 @@ pico_sdk_init()
 add_compile_definitions(PICO_XOSC_STARTUP_DELAY_MULTIPLIER=64)
 
 add_executable(debugprobe
+        src/probe_config.c
         src/led.c
         src/main.c
         src/usb_descriptors.c
