@@ -65,13 +65,13 @@ do { \
 
 // TODO tie this up with PICO_BOARD defines in the main SDK
 
-#ifdef DEBUG_ON_PICO 
-#include "board_pico_config.h"
-#else
-#include "board_debug_probe_config.h"
-#endif
+//#ifdef DEBUG_ON_PICO 
+//#include "board_pico_config.h"
+//#else
+//#include "board_debug_probe_config.h"
+//#endif
 //#include "board_example_config.h"
-
+#include "board_rp2040_launchpad.h"
 
 #define PROTO_DAP_V1 1
 #define PROTO_DAP_V2 2
