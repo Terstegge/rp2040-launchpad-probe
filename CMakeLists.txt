@@ -9,7 +9,7 @@ project(debugprobe)
 
 pico_sdk_init()
 
-add_compile_definitions(PICO_XOSC_STARTUP_DELAY_MULTIPLIER=10)
+add_compile_definitions(PICO_XOSC_STARTUP_DELAY_MULTIPLIER=64)
 
 add_executable(debugprobe
         src/led.c
