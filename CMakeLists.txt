@@ -3,13 +3,17 @@ cmake_minimum_required(VERSION 3.12)
 include(pico_sdk_import.cmake)
 
 set(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_LIST_DIR}/freertos)
-include(FreeRTOS_Kernel_import.cmake)
+include(freertos/portable/ThirdParty/GCC/RP2350_ARM_NTZ/FreeRTOS_Kernel_import.cmake)
 
 project(debugprobe)
 
 pico_sdk_init()
 
 add_compile_definitions(PICO_XOSC_STARTUP_DELAY_MULTIPLIER=64)
+
+if (${PICO_SDK_VERSION_MAJOR} LESS 2)
+	message(SEND_ERROR "Version 2 of the Pico SDK is required to compile this project. Please update your installation at ${PICO_SDK_PATH}")
+endif ()
 
 add_executable(debugprobe
         src/probe_config.c
