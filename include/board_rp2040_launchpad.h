@@ -23,63 +23,29 @@
  *
  */
 
-#ifndef BOARD_EXAMPLE_H_
-#define BOARD_EXAMPLE_H_
-// #error "Example board configuration requested - specify PICO_BOARD and re-run CMake."
+#ifndef BOARD_RP2040_LAUNCHPAD_H_
+#define BOARD_RP2040_LAUNCHPAD_H_
 
-/* Select one of these. */
-/* Direct connection - SWCLK/SWDIO on two GPIOs */
 #define PROBE_IO_RAW
-/* SWCLK connected to a GPIO, SWDO driven from a GPIO, SWDI sampled via a level shifter */
-//#define PROBE_IO_SWDI
-/* Level-shifted SWCLK, SWDIO with separate SWDO, SWDI and OE_N pin */
-//#define PROBE_IO_OEN
-
-/* Include CDC interface to bridge to target UART. Omit if not used. */
 #define PROBE_CDC_UART
-/* Target reset GPIO (active-low). Omit if not used.*/
-//#define PROBE_PIN_RESET 0
 
+// PIO config
 #define PROBE_SM 0
 #define PROBE_PIN_OFFSET 6
-/* PIO config for PROBE_IO_RAW */
-#if defined(PROBE_IO_RAW)
 #define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0)
 #define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 1)
-#endif
 
-/* PIO config for PROBE_IO_SWDI */
-#if defined(PROBE_IO_SWDI)
-#define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 0)
-#define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 1)
-#define PROBE_PIN_SWDI  (PROBE_PIN_OFFSET + 2)
-#endif
-
-/* PIO config for PROBE_IO_OEN - note that SWDIOEN and SWCLK are both side_set signals, so must be consecutive. */
-#if defined(PROBE_IO_SWDIOEN)
-#define PROBE_PIN_SWDIOEN (PROBE_PIN_OFFSET + 0)
-#define PROBE_PIN_SWCLK (PROBE_PIN_OFFSET + 1)
-#define PROBE_PIN_SWDIO (PROBE_PIN_OFFSET + 2)
-#define PROBE_PIN_SWDI (PROBE_PIN_OFFSET + 3)
-#endif
-
-#if defined(PROBE_CDC_UART)
+// UART config
 #define PROBE_UART_TX 8
 #define PROBE_UART_RX 9
 #define PROBE_UART_INTERFACE uart1
 #define PROBE_UART_BAUDRATE 115200
-/* Flow control - some or all of these can be omitted if not used */
-//#define PROBE_UART_RTS 9
-//#define PROBE_UART_DTR 10
-#endif
 
-/* LED config - some or all of these can be omitted if not used */
-//#define PROBE_USB_CONNECTED_LED 2
-//#define PROBE_DAP_CONNECTED_LED 15
+/* LED config */
 #define PROBE_DAP_RUNNING_LED 2
-#define PROBE_UART_RX_LED 4
 #define PROBE_UART_TX_LED 3
+#define PROBE_UART_RX_LED 4
 
-#define PROBE_PRODUCT_STRING "RP2040-Launchpad Probe"
+#define PROBE_PRODUCT_STRING "RP2040-Launchpad Probe (CMSIS-DAP)"
 
 #endif
